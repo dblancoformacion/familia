@@ -1,23 +1,7 @@
--- c1
-SELECT nompuerto,dorsal,numetapa FROM puerto;
--- c2
-SELECT numetapa,dorsal FROM lleva;
--- c1 join c2
-SELECT * FROM (
-    SELECT nompuerto,dorsal,numetapa FROM puerto
-  ) c1 JOIN (
-    SELECT numetapa,dorsal FROM lleva
-  ) c2 USING(numetapa);
--- Cero 0
-
-
-
-
+DROP DATABASE IF EXISTS familia;
 CREATE DATABASE familia;
 USE familia;
 
-
-DROP TABLE personas;
 CREATE TABLE personas(
   id_persona int AUTO_INCREMENT,
   persona varchar(127),
@@ -27,10 +11,9 @@ CREATE TABLE personas(
   );
 
 INSERT INTO personas (persona, id_padre)
-  VALUES ('Antonio',3);
-SELECT *,'lolailo' FROM personas;
+  VALUES ('Eva',NULL),('Caín',1),('Abel',1),('Rosario',2),('Antonio',3);
 
-DROP PROCEDURE arbol;
+-- DROP PROCEDURE arbol;
 CREATE PROCEDURE arbol(vid_persona int)
   BEGIN
    CREATE TEMPORARY TABLE arbol(
